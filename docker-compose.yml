@@ -1,0 +1,17 @@
+services:
+    tls-api:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: tls-api
+        container_name: tls-api
+        restart: always
+        network_mode: host
+        environment:
+            - SERVER_HOST=0.0.0.0
+            - SERVER_PORT=8000
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "3"
